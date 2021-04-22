@@ -55,10 +55,11 @@ private extension MonthView {
     }
 
     var monthText: some View {
-        Text(month.fullMonth.uppercased())
+        //Text(month.fullMonth.uppercased())
+        Text(month.fullMont)
             .font(.system(size: 26))
             .bold()
-            .tracking(7)
+            //.tracking(7)
             .foregroundColor(isWithinSameMonthAndYearAsToday ? theme.primary : .primary)
     }
 
