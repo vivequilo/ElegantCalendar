@@ -1,6 +1,6 @@
 // Kevin Li - 2:26 PM - 6/14/20
 
-//import ElegantPages
+import ElegantPages
 import SwiftUI
 
 public struct MonthlyCalendarView: View, MonthlyCalendarManagerDirectAccess {
