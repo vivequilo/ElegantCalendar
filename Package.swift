@@ -13,7 +13,7 @@ let package = Package(
             targets: ["ElegantCalendar"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/vivequilo/swiftui-calendar", from: "1.4.1")
+        .package(url: "https://github.com/vivequilo/ElegantPages", from: "1.4.1")
     ],
     targets: [
         .target(

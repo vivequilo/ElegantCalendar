@@ -1,6 +1,7 @@
 // Kevin Li - 10:51 PM - 6/6/20
 
 import SwiftUI
+import Foundation
 
 /// Any changes to the configuration will reset the calendar based on its new settings
 public struct CalendarConfiguration: Equatable {
@@ -9,12 +10,14 @@ public struct CalendarConfiguration: Equatable {
     public let ascending: Bool
     public let startDate: Date
     public let endDate: Date
+    public var locale: Locale
 
-    public init(calendar: Calendar = .current, ascending: Bool = true, startDate: Date, endDate: Date) {
+    public init(calendar: Calendar = .current, ascending: Bool = true, startDate: Date, endDate: Date, locale: Locale) {
         self.calendar = calendar
         self.ascending = ascending
         self.startDate = startDate
         self.endDate = endDate
+        self.locale = locale
     }
 
     var referenceDate: Date {
