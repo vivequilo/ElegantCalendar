@@ -56,7 +56,7 @@ private extension MonthView {
 
     var monthText: some View {
         //Text(month.fullMonth.uppercased())
-        Text(month.fullMont)
+        Text(month.fullMonth)
             .font(.system(size: 26))
             .bold()
             //.tracking(7)
