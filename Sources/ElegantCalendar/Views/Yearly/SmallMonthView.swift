@@ -46,8 +46,8 @@ struct SmallMonthView: View, YearlyCalendarManagerDirectAccess {
 
     private var monthText: some View {
         // localize this
-        //dateFormatter.locale = self.calendarManager.configuration.locale
-        dateFormatter.locale = Locale(identifier: "es_GT")
+        dateFormatter.locale = self.calendarManager.configuration.locale
+        //dateFormatter.locale = Locale(identifier: "es_GT")
         dateFormatter.dateFormat = "MMM"
         //Text(month.abbreviatedMonth.uppercased())
         return Text(dateFormatter.string(from: month))
