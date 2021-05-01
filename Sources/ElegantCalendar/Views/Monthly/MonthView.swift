@@ -59,6 +59,7 @@ private extension MonthView {
     var monthText: some View {
         // localize this
         dateFormatter.locale = self.calendarManager.configuration.locale
+        dateFormatter.dateFormat = "MMMM"
         //Text(month.fullMonth.uppercased())
         //Text(month.fullMonth)
         return Text(dateFormatter.string(from: month))
@@ -170,19 +171,20 @@ private struct CalendarAccessoryView: View, MonthlyCalendarManagerDirectAccess {
     }
 
     private var dayOfWeekWithMonthAndDayText: some View {
+        dateFormatter.locale = self.calendarManager.configuration.locale
+        dateFormatter.dateFormat = "MMMM d"
         let monthDayText: String
         if numberOfDaysFromTodayToSelectedDate == -1 {
             //monthDayText = "Yesterday"
-            monthDayText = "Ayer"
+            monthDayText = "Ayer, " + dateFormatter.string(from: selectedDate!)
         } else if numberOfDaysFromTodayToSelectedDate == 0 {
             //monthDayText = "Today"
-            monthDayText = "Hoy"
+            monthDayText = "Hoy, " + dateFormatter.string(from: selectedDate!)
         } else if numberOfDaysFromTodayToSelectedDate == 1 {
             //monthDayText = "Tomorrow"
-            monthDayText = "Mañana"
+            monthDayText = "Mañana, " + dateFormatter.string(from: selectedDate!)
         } else {
-            dateFormatter.locale = self.calendarManager.configuration.locale
-            dateFormatter.dateFormat = "EEEE MMMM d"
+            dateFormatter.dateFormat = "EEEE, MMMM d"
             monthDayText = dateFormatter.string(from: selectedDate!)
             //monthDayText = selectedDate!.dayOfWeekWithMonthAndDay
         }
