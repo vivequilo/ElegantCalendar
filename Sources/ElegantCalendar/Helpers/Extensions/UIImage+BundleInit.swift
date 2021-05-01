@@ -1,6 +1,8 @@
 // Kevin Li - 7:44 PM - 7/13/20
 
+#if !os(macOS)
 import UIKit
+#endif
 
 fileprivate class BundleId {}
 

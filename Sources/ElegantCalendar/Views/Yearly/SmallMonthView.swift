@@ -9,6 +9,8 @@ struct SmallMonthView: View, YearlyCalendarManagerDirectAccess {
     let calendarManager: YearlyCalendarManager
 
     let month: Date
+    
+    let dateFormatter = DateFormatter()
 
     private var weeks: [Date] {
         guard let monthInterval = calendar.dateInterval(of: .month, for: month) else {
@@ -43,7 +45,11 @@ struct SmallMonthView: View, YearlyCalendarManagerDirectAccess {
     }
 
     private var monthText: some View {
-        Text(month.abbreviatedMonth.uppercased())
+        // localize this
+        dateFormatter.locale = self.calendarManager.configuration.locale
+        dateFormatter.dateFormat = "MMM"
+        //Text(month.abbreviatedMonth.uppercased())
+        return Text(dateFormatter.string(from: month))
             .font(.subheadline)
             .bold()
             .foregroundColor(isWithinSameMonthAndYearAsToday ? theme.primary : .primary)
