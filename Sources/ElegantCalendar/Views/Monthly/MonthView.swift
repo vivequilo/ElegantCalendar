@@ -9,6 +9,8 @@ struct MonthView: View, MonthlyCalendarManagerDirectAccess {
     @ObservedObject var calendarManager: MonthlyCalendarManager
 
     let month: Date
+    
+    let dateFormatter = DateFormatter()
 
     private var weeks: [Date] {
         guard let monthInterval = calendar.dateInterval(of: .month, for: month) else {
@@ -55,8 +57,11 @@ private extension MonthView {
     }
 
     var monthText: some View {
+        // localize this
+        dateFormatter.locale = self.calendarManager.configuration.locale
         //Text(month.fullMonth.uppercased())
-        Text(month.fullMonth)
+        //Text(month.fullMonth)
+        return Text(dateFormatter.string(from: month))
             .font(.system(size: 26))
             .bold()
             //.tracking(7)
@@ -83,8 +88,13 @@ private extension MonthView {
     }
 
     var daysOfWeekHeader: some View {
-        HStack(spacing: CalendarConstants.Monthly.gridSpacing) {
-            ForEach(calendar.dayOfWeekInitials, id: \.self) { dayOfWeek in
+        // localize this
+        //dateFormatter.locale = self.calendarManager.configuration.locale
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.locale = self.calendarManager.configuration.locale
+        return HStack(spacing: CalendarConstants.Monthly.gridSpacing) {
+            ForEach(calendar.veryShortWeekdaySymbols, id: \.self) { dayOfWeek in
+                //Text(dateFormatter.string(from: dayOfWeek))
                 Text(dayOfWeek)
                     .font(.caption)
                     .frame(width: CalendarConstants.Monthly.dayWidth)
@@ -116,6 +126,8 @@ private struct CalendarAccessoryView: View, MonthlyCalendarManagerDirectAccess {
     let calendarManager: MonthlyCalendarManager
 
     @State private var isVisible = false
+    
+    let dateFormatter = DateFormatter()
 
     private var numberOfDaysFromTodayToSelectedDate: Int {
         let startOfToday = calendar.startOfDay(for: Date())
@@ -147,10 +159,11 @@ private struct CalendarAccessoryView: View, MonthlyCalendarManagerDirectAccess {
     private var selectedDayInformationView: some View {
         HStack {
             VStack(alignment: .leading) {
+                // localize this
                 dayOfWeekWithMonthAndDayText
-                if isNotYesterdayTodayOrTomorrow {
-                    daysFromTodayText
-                }
+//                if isNotYesterdayTodayOrTomorrow {
+//                    daysFromTodayText
+//                }
             }
             Spacer()
         }
@@ -159,13 +172,19 @@ private struct CalendarAccessoryView: View, MonthlyCalendarManagerDirectAccess {
     private var dayOfWeekWithMonthAndDayText: some View {
         let monthDayText: String
         if numberOfDaysFromTodayToSelectedDate == -1 {
-            monthDayText = "Yesterday"
+            //monthDayText = "Yesterday"
+            monthDayText = "Ayer"
         } else if numberOfDaysFromTodayToSelectedDate == 0 {
-            monthDayText = "Today"
+            //monthDayText = "Today"
+            monthDayText = "Hoy"
         } else if numberOfDaysFromTodayToSelectedDate == 1 {
-            monthDayText = "Tomorrow"
+            //monthDayText = "Tomorrow"
+            monthDayText = "Mañana"
         } else {
-            monthDayText = selectedDate!.dayOfWeekWithMonthAndDay
+            dateFormatter.locale = self.calendarManager.configuration.locale
+            dateFormatter.dateFormat = "EEEE MMMM d"
+            monthDayText = dateFormatter.string(from: selectedDate!)
+            //monthDayText = selectedDate!.dayOfWeekWithMonthAndDay
         }
 
         return Text(monthDayText.uppercased())
