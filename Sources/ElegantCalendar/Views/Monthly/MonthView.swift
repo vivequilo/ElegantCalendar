@@ -178,23 +178,24 @@ private struct CalendarAccessoryView: View, MonthlyCalendarManagerDirectAccess {
 
     private var dayOfWeekWithMonthAndDayText: some View {
         dateFormatter.locale = self.calendarManager.configuration.locale
-        //dateFormatter.dateFormat = "MMMM d"
-        dateFormatter.dateFormat = "d de MMMM"
-        let monthDayText: String
+        dateFormatter.dateFormat = "d"
+        var monthDayText: String
         if numberOfDaysFromTodayToSelectedDate == -1 {
             //monthDayText = "Yesterday"
-            monthDayText = "Ayer, " + dateFormatter.string(from: selectedDate!)
+            monthDayText = "Ayer, " + dateFormatter.string(from: selectedDate!) + " de "
         } else if numberOfDaysFromTodayToSelectedDate == 0 {
             //monthDayText = "Today"
             monthDayText = "Hoy, " + dateFormatter.string(from: selectedDate!)
         } else if numberOfDaysFromTodayToSelectedDate == 1 {
             //monthDayText = "Tomorrow"
-            monthDayText = "Mañana, " + dateFormatter.string(from: selectedDate!)
+            monthDayText = "Mañana, " + dateFormatter.string(from: selectedDate!) + " de "
         } else {
-            dateFormatter.dateFormat = "EEEE, d de MMMM"
-            monthDayText = dateFormatter.string(from: selectedDate!)
+            dateFormatter.dateFormat = "EEEE, d"
+            monthDayText = dateFormatter.string(from: selectedDate!) + " de "
             //monthDayText = selectedDate!.dayOfWeekWithMonthAndDay
         }
+        dateFormatter.dateFormat = "MMMM"
+        monthDayText = monthDayText + dateFormatter.string(from: selectedDate!)
 
         return Text(monthDayText.uppercased())
             .font(.subheadline)

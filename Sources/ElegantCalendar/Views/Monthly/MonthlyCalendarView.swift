@@ -73,7 +73,7 @@ public struct MonthlyCalendarView: View, MonthlyCalendarManagerDirectAccess {
         HStack {
             Spacer()
             ScrollBackToTodayButton(scrollBackToToday: scrollBackToToday,
-                                    color: theme.primary)
+                                    color: Color(#colorLiteral(red: 0.2203345597, green: 0.4019248486, blue: 0.6201488376, alpha: 1)))
         }
     }
 
