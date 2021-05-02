@@ -36,7 +36,7 @@ public struct YearlyCalendarView: View, YearlyCalendarManagerDirectAccess {
                     .zIndex(1)
             }
         }
-        .background(colorScheme == .dark ? Color(#colorLiteral(red: 0.1222167654, green: 0.1222167654, blue: 0.1222167654, alpha: 1)) : Color.white)
+        //.background(colorScheme == .dark ? Color(#colorLiteral(red: 0.1222167654, green: 0.1222167654, blue: 0.1222167654, alpha: 1)) : Color.white)
     }
 
     private var yearsList: some View {
