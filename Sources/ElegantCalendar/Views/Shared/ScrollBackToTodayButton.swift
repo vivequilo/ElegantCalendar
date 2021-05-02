@@ -12,7 +12,7 @@ struct ScrollBackToTodayButton: View {
             Image.uTurnLeft
                 .resizable()
                 .frame(width: 30, height: 25)
-                .foregroundColor(color)
+                .foregroundColor(Color(#colorLiteral(red: 0.438621819, green: 0.7752870917, blue: 0.6692710519, alpha: 1)))
         }
         .animation(.easeInOut)
     }
