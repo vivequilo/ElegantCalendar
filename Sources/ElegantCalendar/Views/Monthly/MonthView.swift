@@ -185,7 +185,7 @@ private struct CalendarAccessoryView: View, MonthlyCalendarManagerDirectAccess {
             monthDayText = "Ayer, " + dateFormatter.string(from: selectedDate!) + " de "
         } else if numberOfDaysFromTodayToSelectedDate == 0 {
             //monthDayText = "Today"
-            monthDayText = "Hoy, " + dateFormatter.string(from: selectedDate!)
+            monthDayText = "Hoy, " + dateFormatter.string(from: selectedDate!) + " de "
         } else if numberOfDaysFromTodayToSelectedDate == 1 {
             //monthDayText = "Tomorrow"
             monthDayText = "Mañana, " + dateFormatter.string(from: selectedDate!) + " de "
