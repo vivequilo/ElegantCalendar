@@ -2,6 +2,7 @@
 
 import SwiftUI
 
+
 struct YearView: View, YearlyCalendarManagerDirectAccess {
 
     @Environment(\.calendarTheme) var theme: CalendarTheme

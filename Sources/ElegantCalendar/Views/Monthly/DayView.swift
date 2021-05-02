@@ -3,6 +3,8 @@
 import SwiftUI
 
 struct DayView: View, MonthlyCalendarManagerDirectAccess {
+    
+    @Environment(\.colorScheme) var colorScheme
 
     @Environment(\.calendarTheme) var theme: CalendarTheme
 
@@ -54,16 +56,17 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
 
     private var foregroundColor: Color {
         if isDayToday {
-            return Color(#colorLiteral(red: 0.1736604514, green: 0.3219533506, blue: 0.5, alpha: 1))
+            //return Color(#colorLiteral(red: 0.1736604514, green: 0.3219533506, blue: 0.5, alpha: 1))
+            return Color(#colorLiteral(red: 0.9426569939, green: 0.7287937235, blue: 0.7078659644, alpha: 1))
         } else {
-            return Color(#colorLiteral(red: 0.2203345597, green: 0.4019248486, blue: 0.6201488376, alpha: 1))
+            return (colorScheme == .dark ? Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)) : Color(#colorLiteral(red: 0.08739252968, green: 0.07874827584, blue: 0.07792898026, alpha: 1)))
         }
     }
 
     private var backgroundColor: some View {
         Group {
             if isDayToday {
-                Color(#colorLiteral(red: 0.1736604514, green: 0.3219533506, blue: 0.5, alpha: 1))
+                Color(#colorLiteral(red: 0.9426570535, green: 0.3630299568, blue: 0.4011509418, alpha: 1))
             } else if isDaySelectableAndInRange {
                 Color(#colorLiteral(red: 0.2203345597, green: 0.4019248486, blue: 0.6201488376, alpha: 1))
                     .opacity(datasource?.calendar(backgroundColorOpacityForDate: day) ?? 1)
@@ -95,7 +98,7 @@ private struct CircularSelectionView: View {
     var body: some View {
         Circle()
             //.stroke(Color.primary, lineWidth: 2)
-            .stroke(Color(#colorLiteral(red: 0.2203345597, green: 0.4019248486, blue: 0.6201488376, alpha: 1)), lineWidth: 2)
+            .stroke(Color(#colorLiteral(red: 0.9426569939, green: 0.3630299568, blue: 0.4011508822, alpha: 1)), lineWidth: 2)
             .frame(width: radius, height: radius)
             .opacity(startBounce ? 1 : 0)
             .animation(.interpolatingSpring(stiffness: 150, damping: 10))

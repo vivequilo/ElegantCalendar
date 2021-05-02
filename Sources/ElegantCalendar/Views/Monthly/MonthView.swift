@@ -62,21 +62,27 @@ private extension MonthView {
         dateFormatter.dateFormat = "MMMM"
         //Text(month.fullMonth.uppercased())
         //Text(month.fullMonth)
-        return Text(dateFormatter.string(from: month))
-            .font(.system(size: 26))
-            .bold()
+        return Text(dateFormatter.string(from: month).firstCapitalized)
+            //.font(.system(size: 26))
+            .font(.title)
+            //.bold()
             //.tracking(7)
-            .foregroundColor(isWithinSameMonthAndYearAsToday ? theme.primary : .primary)
+            .foregroundColor(isWithinSameMonthAndYearAsToday ? Color(#colorLiteral(red: 0.438621819, green: 0.7752870917, blue: 0.6692710519, alpha: 1))  : .primary)
     }
 
     var yearText: some View {
         Text(month.year)
             .font(.system(size: 12))
             .tracking(2)
-            .foregroundColor(isWithinSameMonthAndYearAsToday ? theme.primary : .gray)
+            .foregroundColor(isWithinSameMonthAndYearAsToday ? Color(#colorLiteral(red: 0.438621819, green: 0.7752870917, blue: 0.6692710519, alpha: 1)) : .gray)
             .opacity(0.95)
     }
 
+}
+
+extension StringProtocol {
+    var firstUppercased: String { prefix(1).uppercased() + dropFirst() }
+    var firstCapitalized: String { prefix(1).capitalized + dropFirst() }
 }
 
 private extension MonthView {
