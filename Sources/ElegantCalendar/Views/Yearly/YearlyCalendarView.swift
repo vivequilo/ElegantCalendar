@@ -69,7 +69,7 @@ public struct YearlyCalendarView: View, YearlyCalendarManagerDirectAccess {
     }
 
     private var scrollBackToTodayButton: some View {
-        ScrollBackToTodayButton(scrollBackToToday: calendarManager.scrollBackToToday,
+        ScrollBackToTodayButton(theme: theme, scrollBackToToday: calendarManager.scrollBackToToday,
                                 color: theme.primary)
     }
 

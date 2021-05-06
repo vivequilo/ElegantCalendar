@@ -3,6 +3,8 @@
 import SwiftUI
 
 struct ScrollBackToTodayButton: View {
+    
+    let theme: CalendarTheme
 
     let scrollBackToToday: () -> Void
     let color: Color
@@ -12,7 +14,7 @@ struct ScrollBackToTodayButton: View {
             Image.uTurnLeft
                 .resizable()
                 .frame(width: 30, height: 25)
-                .foregroundColor(Color(#colorLiteral(red: 0.438621819, green: 0.7752870917, blue: 0.6692710519, alpha: 1)))
+                .foregroundColor(theme.primary)
         }
         .animation(.easeInOut)
     }
@@ -22,7 +24,7 @@ struct ScrollBackToTodayButton: View {
 struct ScrollBackToTodayButton_Previews: PreviewProvider {
     static var previews: some View {
         LightDarkThemePreview {
-            ScrollBackToTodayButton(scrollBackToToday: {}, color: .purple)
+            ScrollBackToTodayButton(theme: .default, scrollBackToToday: {}, color: .purple)
         }
     }
 }

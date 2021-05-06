@@ -66,7 +66,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
     private var backgroundColor: some View {
         Group {
             if isDayToday {
-                Color(#colorLiteral(red: 0.438621819, green: 0.7752870917, blue: 0.6692710519, alpha: 1))
+                theme.primary
             } else if isDaySelectableAndInRange {
                 Color(.gray)
                     .opacity(datasource?.calendar(backgroundColorOpacityForDate: day) ?? 1)
@@ -98,7 +98,7 @@ private struct CircularSelectionView: View {
     var body: some View {
         Circle()
             //.stroke(Color.primary, lineWidth: 2)
-            .stroke(Color(#colorLiteral(red: 0.438621819, green: 0.7752870917, blue: 0.6692710519, alpha: 1)), lineWidth: 2.5)
+            .stroke(Color.primary, lineWidth: 2.5)
             .frame(width: radius, height: radius)
             .opacity(startBounce ? 1 : 0)
             .animation(.interpolatingSpring(stiffness: 150, damping: 10))

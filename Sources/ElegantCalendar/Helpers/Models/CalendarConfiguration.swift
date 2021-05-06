@@ -13,7 +13,11 @@ public struct CalendarConfiguration: Equatable {
     public var locale: Locale
 
     //public init(calendar: Calendar = .current, ascending: Bool = true, startDate: Date, endDate: Date, locale: Locale = .current) {
-    public init(calendar: Calendar = .current, ascending: Bool = true, startDate: Date, endDate: Date, locale: Locale = .current) {
+    public init(calendar: Calendar = .current,
+                ascending: Bool = true,
+                startDate: Date,
+                endDate: Date,
+                locale: Locale = .current) {
         self.calendar = calendar
         self.ascending = ascending
         self.startDate = startDate

@@ -67,14 +67,14 @@ private extension MonthView {
             .font(.title)
             //.bold()
             //.tracking(7)
-            .foregroundColor(isWithinSameMonthAndYearAsToday ? Color(#colorLiteral(red: 0.438621819, green: 0.7752870917, blue: 0.6692710519, alpha: 1))  : .primary)
+            .foregroundColor(isWithinSameMonthAndYearAsToday ? theme.primary  : .primary)
     }
 
     var yearText: some View {
         Text(month.year)
             .font(.system(size: 12))
             .tracking(2)
-            .foregroundColor(isWithinSameMonthAndYearAsToday ? Color(#colorLiteral(red: 0.438621819, green: 0.7752870917, blue: 0.6692710519, alpha: 1)) : .gray)
+            .foregroundColor(isWithinSameMonthAndYearAsToday ? theme.primary : .gray)
             .opacity(0.95)
     }
 
