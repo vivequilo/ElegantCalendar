@@ -10,6 +10,7 @@ public struct CalendarConfiguration: Equatable {
     public let ascending: Bool
     public let startDate: Date
     public let endDate: Date
+    public let yOffset: CGFloat?
     public var locale: Locale
 
     //public init(calendar: Calendar = .current, ascending: Bool = true, startDate: Date, endDate: Date, locale: Locale = .current) {
@@ -17,11 +18,13 @@ public struct CalendarConfiguration: Equatable {
                 ascending: Bool = true,
                 startDate: Date,
                 endDate: Date,
+                yOffset: CGFloat? = nil,
                 locale: Locale = .current) {
         self.calendar = calendar
         self.ascending = ascending
         self.startDate = startDate
         self.endDate = endDate
+        self.yOffset = yOffset
         self.locale = locale
     }
 
